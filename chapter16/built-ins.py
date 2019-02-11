@@ -1,0 +1,5 @@
+print(type(4))
+print(type(5.6))
+print(type(True))
+print(type('John'))
+print(type([1, 2, 3, 4]))
