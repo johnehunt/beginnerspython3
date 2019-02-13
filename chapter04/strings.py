@@ -33,6 +33,9 @@ print(title.split(','))
 print('*' * 10)
 print('Hi' * 10)
 
+print('John Alan Hunt'.find('Alan'))
+print('John Timothy Hunt'.find('Alan'))
+
 some_string = 'Hello World'
 print('Testing a String')
 print('some_string', some_string)
