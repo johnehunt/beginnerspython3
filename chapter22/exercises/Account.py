@@ -30,6 +30,11 @@ class Account:
         return 'Account[' + self.account_number +'] - ' + \
                self.account_holder + ', ' + self.type + ' account = ' + str(self.balance)
 
+class BalanceError(Exception):
+    """ Valid Ages must be between 0 and 120 """
+
+    def __init__(self, account):
+        self.account = account
 
 class CurrentAccount(Account):
 
@@ -40,6 +45,7 @@ class CurrentAccount(Account):
     def withdraw(self, amount):
         if self._balance - amount < self.overdraft_limit:
             print('Withdrawal would exceed your overdraft limit')
+            raise BalanceError(self)
         else:
             self._balance -= amount
 
@@ -71,6 +77,10 @@ print('balance:', acc1.balance)
 
 print('Number of Account instances created:', Account.instance_count)
 
-print('balance:', acc1.balance)
-acc1.withdraw(300.00)
-print('balance:', acc1.balance)
+try:
+    print('balance:', acc1.balance)
+    acc1.withdraw(300.00)
+    print('balance:', acc1.balance)
+except BalanceError as e:
+    print('Handling Exception')
+    print(e)
