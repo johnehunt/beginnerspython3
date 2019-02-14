@@ -1,8 +1,8 @@
 import accounts
 
-acc1 = accounts.CurrentAccount('123', 'John', 10.05, 100.0)
-acc2 = accounts.DepositAccount('345', 'John', 23.55, 0.5)
-acc3 = accounts.InvestmentAccount('567', 'Phoebe', 12.45, 'high risk')
+acc1 = accounts.CurrentAccount('123', 'John', 10.05, 'current', 100.0)
+acc2 = accounts.DepositAccount('345', 'John', 23.55, 'savings', 0.5)
+acc3 = accounts.InvestmentAccount('567', 'Phoebe', 12.45, 'investment', 'risky')
 
 print(acc1)
 print(acc2)

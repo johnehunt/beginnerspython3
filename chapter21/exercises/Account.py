@@ -33,33 +33,42 @@ class Account:
 
 class CurrentAccount(Account):
 
-    def __init__(self, account_number, account_holder, opening_balance, account_type, overdraft_limit):
-        super().__init__(account_number, account_holder, opening_balance, account_type)
+    def __init__(self, account_number, account_holder, opening_balance, overdraft_limit):
+        super().__init__(account_number, account_holder, opening_balance, 'current')
         self.overdraft_limit = -overdraft_limit
 
     def withdraw(self, amount):
-        if self._balance - amount < self.overdraft_limit:
+        if self.balance - amount < self.overdraft_limit:
             print('Withdrawal would exceed your overdraft limit')
         else:
             self._balance -= amount
 
     def __str__(self):
-        return super().__str__() + ' overdraft limit: ' + str(self.overdraft_limit)
+        return super().__str__() + 'overdraft limit: ' + str(self.overdraft_limit)
 
 
 class DepositAccount(Account):
 
-    def __init__(self, account_number, account_holder, opening_balance, account_type, interest_rate):
-        super().__init__(account_number, account_holder, opening_balance, account_type)
+    def __init__(self, account_number, account_holder, opening_balance, interest_rate):
+        super().__init__(account_number, account_holder, opening_balance, 'deposit')
         self.interest_rate = interest_rate
 
     def __str__(self):
         return super().__str__() + 'interest rate: ' + str(self.interest_rate)
 
 
-acc1 = CurrentAccount('123', 'John', 10.05, 'current', 100.0)
-acc2 = DepositAccount('345', 'John', 23.55, 'savings', 0.5)
-acc3 = Account('567', 'Phoebe', 12.45, 'investment')
+class InvestmentAccount(Account):
+    def __init__(self, account_number, account_holder, opening_balance, investment_type):
+        super().__init__(account_number, account_holder, opening_balance, 'investment')
+        self.investment_type = investment_type
+
+    def __str__(self):
+        return super().__str__() + ', type: ' + self.type
+
+
+acc1 = CurrentAccount('123', 'John', 10.05, 100.0)
+acc2 = DepositAccount('345', 'John', 23.55, 0.5)
+acc3 = InvestmentAccount('567', 'Phoebe', 12.45, 'high risk')
 
 print(acc1)
 print(acc2)
