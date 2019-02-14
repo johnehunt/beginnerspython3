@@ -1,8 +1,8 @@
 def logger(func):
     def inner():
-        print('calling ', func)
+        print('calling ', func.__name__)
         func()
-        print('called ', func)
+        print('called ', func.__name__)
 
     return inner
 
@@ -41,12 +41,12 @@ print(hello())
 def register(active=True):
     def wrap(func):
         def wrapper():
-            print('Calling ', func, ' decorator param ', active)
+            print('Calling ', func.__name__, ' decorator param ', active)
             if active:
                 func()
-                print('Called ', func)
+                print('Called ', func.__name__)
             else:
-                print('Skipped ', func)
+                print('Skipped ', func.__name__)
 
         return wrapper
 

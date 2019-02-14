@@ -4,9 +4,9 @@ from functools import wraps
 def logger(func):
     @wraps(func)
     def inner():
-        print('calling ', func)
+        print('calling ', func.__name__)
         func()
-        print('called ', func)
+        print('called ', func.__name__)
 
     return inner
 
