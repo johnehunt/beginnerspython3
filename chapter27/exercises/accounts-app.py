@@ -1,4 +1,4 @@
-import accounts
+import fintech.accounts as accounts
 
 acc1 = accounts.CurrentAccount('123', 'John', 10.05, 100.0)
 acc2 = accounts.DepositAccount('345', 'John', 23.55, 0.5)

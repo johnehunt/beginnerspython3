@@ -28,3 +28,8 @@ with accounts.CurrentAccount ('891', 'Adam', 5.0, 50.0) as acc:
     print(acc.balance)
 
 print('acc1.branch:', acc1.branch)
+
+for transaction in acc1:
+    print(transaction)
+
+acc1.deposit(-1.0)
