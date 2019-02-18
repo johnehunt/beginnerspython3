@@ -1,3 +1,5 @@
+# Using a pipe to communicate between two processes
+
 from multiprocessing import Process, Pipe
 from time import sleep
 

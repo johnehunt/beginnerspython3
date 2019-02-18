@@ -17,7 +17,7 @@ def main():
     print('Starting')
     print('Root application process id:', os.getpid())
     set_start_method('spawn')
-    t = Process(target=worker, args=('A'))
+    t = Process(target=worker, args='A')
     t.start()
 
     print('Done')

@@ -12,11 +12,11 @@ def worker(x):
 
 def main():
     with Pool(processes=2) as pool:
-        res = pool.apply_async(worker, (6,))
+        res = pool.apply_async(worker, [6])
         print('Result from async: ', res.get(timeout=1))
 
     with Pool(processes=2) as pool:
-        pool.apply_async(worker, args=(4,),
+        pool.apply_async(worker, args=[4],
                          callback=collect_results)
 
 
