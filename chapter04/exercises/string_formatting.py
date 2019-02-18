@@ -17,7 +17,7 @@ print(format_string.format(artist='Paloma Faith', song='Guilty', year=2017))
 
 # Can align text and specify width
 print('|{:25}|'.format('25 characters width'))
-print('|{:<25}|'.format('left aligned')) # Same as not specifying an alignment
+print('|{:<25}|'.format('left aligned'))  # Same as not specifying an alignment
 print('|{:>25}|'.format('right aligned'))
 print('|{:^25}|'.format('centered'))
 
