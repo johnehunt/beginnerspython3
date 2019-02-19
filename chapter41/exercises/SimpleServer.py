@@ -1,6 +1,5 @@
 import socketserver
 from datetime import datetime, date
-import time
 
 
 class MyTCPHandler(socketserver.BaseRequestHandler):
