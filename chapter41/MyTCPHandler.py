@@ -27,7 +27,7 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
 
 
 def main():
-    print('Starting server')
+    print('Setting up server')
     server_address = ('localhost', 8084)
     print('Creating server')
     server = socketserver.TCPServer(server_address,
