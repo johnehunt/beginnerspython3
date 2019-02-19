@@ -2,7 +2,7 @@ import csv
 
 
 def main():
-    print('Starting write of dic CSV example')
+    print('Starting write of dict CSV example')
     with open('names.csv', 'w', newline='') as csvfile:
         fieldnames = ['first_name', 'last_name', 'result']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
