@@ -1,0 +1,18 @@
+version: 1
+formatters:
+  myformatter:
+    format: '%(asctime)s [%(levelname)s] %(name)s.%(funcName)s: %(message)s'
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: myformatter
+    stream: ext://sys.stdout
+loggers:
+  fintech.accounts:
+      level: DEBUG
+      handlers: [console]
+      propagate: no
+root:
+  level: ERROR
+  handlers: [console]
