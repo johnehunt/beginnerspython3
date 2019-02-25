@@ -16,13 +16,13 @@ def is_even(i):
 d2 = list(filter(is_even, data))
 print('d2:', d2)
 
-data = [Person('John', 54), Person('Phoebe', 21), Person('Adam', 19)]
+data = [Person('Alun', 54), Person('Niki', 21), Person('Megan', 19)]
 for p in data:
     print(p, end=', ')
 
 print('\n-----')
 
-# Ue a lambda to filter for People 21 or over
+# Use a lambda to filter out People over 21
 d3 = list(filter(lambda p: p.age <= 21, data))
 for p in d3:
     print(p, end=', ')
