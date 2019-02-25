@@ -20,24 +20,24 @@ class Person:
         return self.name + ' is ' + str(self.age)
 
     def birthday(self):
-        print ('Happy birthday you were', self.age)
+        print('Happy birthday you were', self.age)
         self.age += 1
         print('You are now', self.age)
 
     def calculate_pay(self, hours_worked):
         rate_of_pay = 7.50
-        if (self.age >= 21):
+        if self.age >= 21:
             rate_of_pay += 2.50
         return hours_worked * rate_of_pay
 
     def is_teenager(self):
-        return (self.age < 20)
+        return self.age < 20
 
 
-p1 = Person('John', 36)
-p2 = Person('Phoebe', 21)
-p3 = Person('Adam', 19)
-p4 = Person('Denise', 31)
+p1 = Person('Jason', 36)
+p2 = Person('Carol', 21)
+p3 = Person('James', 19)
+p4 = Person('Tom', 31)
 print(Person.instance_count)
 
 print('Class attributes')

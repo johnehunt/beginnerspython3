@@ -27,7 +27,7 @@ class Employee(Person, PrinterMixin, IDPrinterMixin):
 
 
 def main():
-    e = Employee('John', 21, 'MS123')
+    e = Employee('Megan', 21, 'MS123')
     e.print_me()
     e.print_id()
 

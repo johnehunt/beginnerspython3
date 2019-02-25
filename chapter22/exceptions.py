@@ -26,9 +26,9 @@ def f2():
 
 
 def function_bang():
-    print('f3 in')
+    print('function_bang in')
     raise ValueError('Bang!')
-    print('f3 out')
+    print('function_bang out')
 
 
 class InvalidAgeException(Exception):

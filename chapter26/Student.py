@@ -27,7 +27,7 @@ class Student:
         return 'default'
 
 
-student = Student('John')
+student = Student('Katie')
 
 print('Student.__dict__:', Student.__dict__) # Class attribute dictionary
 print('student.__dict__:', student.__dict__) # Instance / Object attribute doctionary

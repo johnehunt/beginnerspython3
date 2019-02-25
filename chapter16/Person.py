@@ -15,12 +15,12 @@ class Person:
 
     def calculate_pay(self, hours_worked):
         rate_of_pay = 7.50
-        if (self.age >= 21):
+        if self.age >= 21:
             rate_of_pay += 2.50
         return hours_worked * rate_of_pay
 
     def is_teenager(self):
-        return (self.age < 20)
+        return self.age < 20
 
 
 p1 = Person('John', 36)

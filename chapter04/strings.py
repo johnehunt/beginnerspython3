@@ -13,7 +13,7 @@ Hello
 """
 print(z)
 
-my_variable = 'John'
+my_variable = 'Bob'
 print(type(my_variable))
 
 my_string = 'Hello World'

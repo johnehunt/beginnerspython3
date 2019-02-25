@@ -23,7 +23,7 @@ class Employee(object):
 def main():
     Person.register(Employee)
     print(issubclass(Employee, Person))
-    e = Employee('John', 21, 'MS123')
+    e = Employee('Megan', 21, 'MS123')
     print(isinstance(e, Person))
 
 
