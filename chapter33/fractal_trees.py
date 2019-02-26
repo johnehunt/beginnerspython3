@@ -7,6 +7,7 @@ IMAGE_SIZE_Y = 500
 
 FACTOR = 1.45
 
+
 def setup_screen(title, background='white', screen_size_x=640, screen_size_y=320, tracer_size=200):
     print('Set up Screen')
     turtle.title(title)
@@ -37,16 +38,17 @@ def draw_tree(length, width=9):
     turtle.width(width)
     turtle.forward(length)
     turtle.left(30)
-    draw_tree(length / FACTOR, width-1)
+    draw_tree(length / FACTOR, width - 1)
     turtle.right(60)
-    draw_tree(length / FACTOR, width-1)
+    draw_tree(length / FACTOR, width - 1)
     turtle.left(30)
     turtle.color(color)
     turtle.width(width)
     turtle.backward(length)
 
+
 # Ensure tree is centred
-turtle.setposition(-50,-140)
+turtle.setposition(-50, -140)
 
 turtle.down()
 draw_tree(100)
