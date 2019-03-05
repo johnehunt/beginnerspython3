@@ -1,20 +1,3 @@
-class BalanceError(Exception):
-    """ The Balance will be invalid """
-
-    def __init__(self, account):
-        self.account = account
-
-
-class AmountError(Exception):
-
-    def __init__(self, account, msg):
-        self.account = account
-        self.message = msg
-
-    def __str__(self):
-        return 'AmountError (' + self.message + ') on ' + str(self.account)
-
-
 class Account:
     """" A class used to represent a type of account """
 
@@ -33,18 +16,10 @@ class Account:
         self.type = account_type
 
     def deposit(self, amount):
-        if amount < 0:
-            print('You cannot deposit negative amounts')
-            raise AmountError(account = self, msg = 'Cannot deposit negative amounts')
-        else:
-            self._balance += amount
+        self._balance += amount
 
     def withdraw(self, amount):
-        if amount < 0:
-            print('You cannot withdraw negative amounts')
-            raise AmountError(self, 'Cannot withdraw negative amounts')
-        else:
-            self._balance -= amount
+        self._balance -= amount
 
     @property
     def balance(self):
@@ -55,6 +30,7 @@ class Account:
         return 'Account[' + self.account_number +'] - ' + \
                self.account_holder + ', ' + self.type + ' account = ' + str(self.balance)
 
+
 class CurrentAccount(Account):
 
     def __init__(self, account_number, account_holder, opening_balance, overdraft_limit):
@@ -62,12 +38,8 @@ class CurrentAccount(Account):
         self.overdraft_limit = -overdraft_limit
 
     def withdraw(self, amount):
-        if amount < 0:
-            print('You cannot withdraw negative amounts')
-            raise AmountError(self, 'Cannot withdraw negative amounts')
-        elif self.balance - amount < self.overdraft_limit:
+        if self.balance - amount < self.overdraft_limit:
             print('Withdrawal would exceed your overdraft limit')
-            raise BalanceError(self)
         else:
             self._balance -= amount
 
@@ -108,15 +80,6 @@ print('balance:', acc1.balance)
 
 print('Number of Account instances created:', Account.instance_count)
 
-try:
-    print('balance:', acc1.balance)
-    acc1.withdraw(300.00)
-    print('balance:', acc1.balance)
-except BalanceError as e:
-    print('Handling Exception')
-    print(e)
-
-try:
-    acc1.deposit(-1)
-except AmountError as e:
-    print(e)
+print('balance:', acc1.balance)
+acc1.withdraw(300.00)
+print('balance:', acc1.balance)

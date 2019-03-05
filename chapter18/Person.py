@@ -1,21 +1,28 @@
 class Person:
+    """ An example class to hold a persons name and age"""
+
+    instance_count = 0
+
+    @classmethod
+    def increment_instance_count(cls):
+        cls.instance_count += 1
+
+    @staticmethod
+    def static_function():
+        print('Static method')
+
     def __init__(self, name, age):
+        Person.increment_instance_count()
         self.name = name
         self.age = age
+
+    def __str__(self):
+        return self.name + ' is ' + str(self.age)
 
     def birthday(self):
         print('Happy birthday you were', self.age)
         self.age += 1
         print('You are now', self.age)
-
-    def __str__(self):
-        return self.name + ' is ' + str(self.age)
-
-
-class Employee(Person):
-    def __init__(self, name, age, id):
-        super().__init__(name, age)
-        self.id = id
 
     def calculate_pay(self, hours_worked):
         rate_of_pay = 7.50
@@ -23,30 +30,21 @@ class Employee(Person):
             rate_of_pay += 2.50
         return hours_worked * rate_of_pay
 
-    def __str__(self):
-        return super().__str__() + ' - id(' + str(self.id) + ')'
+    def is_teenager(self):
+        return self.age < 20
 
 
-class SalesPerson(Employee):
-    def __init__(self, name, age, id, region, sales):
-        super().__init__(name, age, id)
-        self.region = region
-        self.sales = sales
+p1 = Person('Jason', 36)
+p2 = Person('Carol', 21)
+p3 = Person('James', 19)
+p4 = Person('Tom', 31)
+print(Person.instance_count)
 
-    def bonus(self):
-        return self.sales * 0.5
-
-
-p = Person('John', 54)
-print(p)
-
-e = Employee('Denise', 51, 7468)
-e.birthday()
-
-print('e.calculate_pay(40):', e.calculate_pay(40))
-
-s = SalesPerson('Phoebe', 21, 4712, 'UK', 30000.0)
-s.birthday()
-
-print('s.calculate_pay(40):', s.calculate_pay(40))
-print('s.bonus():', s.bonus())
+print('Class attributes')
+print(Person.__name__)
+print(Person.__module__)
+print(Person.__doc__)
+print(Person.__dict__)
+print('Object attributes')
+print(p1.__class__)
+print(p1.__dict__)

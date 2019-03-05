@@ -1,15 +1,7 @@
 class Account:
     """" A class used to represent a type of account """
 
-    instance_count = 0
-
-    @classmethod
-    def increment_instance_count(cls):
-        print('Creating new Account')
-        cls.instance_count += 1
-
     def __init__(self, account_number, account_holder, opening_balance, account_type):
-        Account.increment_instance_count()
         self.account_number = account_number
         self.account_holder = account_holder
         self.balance = opening_balance
@@ -41,4 +33,3 @@ acc1.deposit(23.45)
 acc1.withdraw(12.33)
 print('balance:', acc1.get_balance())
 
-print('Number of Account instances created:', Account.instance_count)

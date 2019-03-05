@@ -3,9 +3,6 @@ import random
 # Initialise the number to be guessed
 NUMBER_TO_GUESS = random.randint(1, 10)
 
-# Initialise the number of tries the player has made
-count_number_of_tries = 1
-
 def welcome_message():
     print('Welcome to the number guess game')
 
@@ -31,9 +28,8 @@ def get_user_input(prompt):
 
 def play_game():
     """ Defines main loop controlling game"""
-
-    # Use nonlocal to allow the value of count_number_of_tries to be changed
-    global count_number_of_tries
+    # Initialise the number of tries the player has made
+    count_number_of_tries = 1
 
     # Obtain their initial guess
     guess = get_user_input('Please guess a number between 1 and 10: ')
@@ -61,8 +57,6 @@ def check_for_a_win(guess):
     """ Check to see if they did guess the correct number """
     if NUMBER_TO_GUESS == guess:
         print('Well done you won!')
-        # Can now reference count_number_of_tries
-        print('You took', count_number_of_tries, 'goes to complete the game')
     else:
         print("Sorry - you loose")
         print('The number you needed to guess was',

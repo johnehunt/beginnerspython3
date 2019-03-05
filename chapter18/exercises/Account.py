@@ -29,44 +29,9 @@ class Account:
                self.account_holder + ', ' + self.type + ' account = ' + str(self.balance)
 
 
-class CurrentAccount(Account):
-
-    def __init__(self, account_number, account_holder, opening_balance, overdraft_limit):
-        super().__init__(account_number, account_holder, opening_balance, 'current')
-        self.overdraft_limit = -overdraft_limit
-
-    def withdraw(self, amount):
-        if self.balance - amount < self.overdraft_limit:
-            print('Withdrawal would exceed your overdraft limit')
-        else:
-            self.balance -= amount
-
-    def __str__(self):
-        return super().__str__() + 'overdraft limit: ' + str(self.overdraft_limit)
-
-
-class DepositAccount(Account):
-
-    def __init__(self, account_number, account_holder, opening_balance, interest_rate):
-        super().__init__(account_number, account_holder, opening_balance, 'deposit')
-        self.interest_rate = interest_rate
-
-    def __str__(self):
-        return super().__str__() + 'interest rate: ' + str(self.interest_rate)
-
-
-class InvestmentAccount(Account):
-    def __init__(self, account_number, account_holder, opening_balance, investment_type):
-        super().__init__(account_number, account_holder, opening_balance, 'investment')
-        self.investment_type = investment_type
-
-    def __str__(self):
-        return super().__str__() + ', type: ' + self.type
-
-
-acc1 = CurrentAccount('123', 'John', 10.05, 100.0)
-acc2 = DepositAccount('345', 'John', 23.55, 0.5)
-acc3 = InvestmentAccount('567', 'Phoebe', 12.45, 'high risk')
+acc1 = Account('123', 'John', 10.05, 'current')
+acc2 = Account('345', 'John', 23.55, 'savings')
+acc3 = Account('567', 'Phoebe', 12.45, 'investment')
 
 print(acc1)
 print(acc2)
@@ -77,7 +42,3 @@ acc1.withdraw(12.33)
 print('balance:', acc1.get_balance())
 
 print('Number of Account instances created:', Account.instance_count)
-
-print('balance:', acc1.get_balance())
-acc1.withdraw(300.00)
-print('balance:', acc1.get_balance())

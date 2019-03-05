@@ -1,22 +1,3 @@
-# Accounts module
-
-class BalanceError(Exception):
-    """ The Balance will be invalid """
-
-    def __init__(self, account):
-        self.account = account
-
-
-class AmountError(Exception):
-
-    def __init__(self, account, msg):
-        self.account = account
-        self.message = msg
-
-    def __str__(self):
-        return 'AmountError (' + self.message + ') on ' + str(self.account)
-
-
 class Account:
     """" A class used to represent a type of account """
 
@@ -31,31 +12,22 @@ class Account:
         Account.increment_instance_count()
         self.account_number = account_number
         self.account_holder = account_holder
-        self._balance = opening_balance
+        self.balance = opening_balance
         self.type = account_type
 
     def deposit(self, amount):
-        if amount < 0:
-            print('You cannot deposit negative amounts')
-            raise AmountError(account = self, msg = 'Cannot deposit negative amounts')
-        else:
-            self._balance += amount
+        self.balance += amount
 
     def withdraw(self, amount):
-        if amount < 0:
-            print('You cannot withdraw negative amounts')
-            raise AmountError(self, 'Cannot withdraw negative amounts')
-        else:
-            self._balance -= amount
+        self.balance -= amount
 
-    @property
-    def balance(self):
-        """ Provides the current balance """
-        return self._balance
+    def get_balance(self):
+        return self.balance
 
     def __str__(self):
         return 'Account[' + self.account_number +'] - ' + \
                self.account_holder + ', ' + self.type + ' account = ' + str(self.balance)
+
 
 class CurrentAccount(Account):
 
@@ -64,14 +36,10 @@ class CurrentAccount(Account):
         self.overdraft_limit = -overdraft_limit
 
     def withdraw(self, amount):
-        if amount < 0:
-            print('You cannot withdraw negative amounts')
-            raise AmountError(self, 'Cannot withdraw negative amounts')
-        elif self.balance - amount < self.overdraft_limit:
+        if self.balance - amount < self.overdraft_limit:
             print('Withdrawal would exceed your overdraft limit')
-            raise BalanceError(self)
         else:
-            self._balance -= amount
+            self.balance -= amount
 
     def __str__(self):
         return super().__str__() + 'overdraft limit: ' + str(self.overdraft_limit)
@@ -94,3 +62,22 @@ class InvestmentAccount(Account):
 
     def __str__(self):
         return super().__str__() + ', type: ' + self.type
+
+
+acc1 = CurrentAccount('123', 'John', 10.05, 100.0)
+acc2 = DepositAccount('345', 'John', 23.55, 0.5)
+acc3 = InvestmentAccount('567', 'Phoebe', 12.45, 'high risk')
+
+print(acc1)
+print(acc2)
+print(acc3)
+
+acc1.deposit(23.45)
+acc1.withdraw(12.33)
+print('balance:', acc1.get_balance())
+
+print('Number of Account instances created:', Account.instance_count)
+
+print('balance:', acc1.get_balance())
+acc1.withdraw(300.00)
+print('balance:', acc1.get_balance())

@@ -1,18 +1,7 @@
 class Person:
     """ An example class to hold a persons name and age"""
 
-    instance_count = 0
-
-    @classmethod
-    def increment_instance_count(cls):
-        cls.instance_count += 1
-
-    @staticmethod
-    def static_function():
-        print('Static method')
-
     def __init__(self, name, age):
-        Person.increment_instance_count()
         self.name = name
         self.age = age
 
@@ -20,7 +9,7 @@ class Person:
         return self.name + ' is ' + str(self.age)
 
     def birthday(self):
-        print('Happy birthday you were', self.age)
+        print ('Happy birthday you were', self.age)
         self.age += 1
         print('You are now', self.age)
 
@@ -34,17 +23,37 @@ class Person:
         return self.age < 20
 
 
-p1 = Person('Jason', 36)
-p2 = Person('Carol', 21)
-p3 = Person('James', 19)
-p4 = Person('Tom', 31)
-print(Person.instance_count)
+p1 = Person('John', 36)
+p2 = Person('Phoebe', 21)
 
-print('Class attributes')
-print(Person.__name__)
-print(Person.__module__)
-print(Person.__doc__)
-print(Person.__dict__)
-print('Object attributes')
-print(p1.__class__)
-print(p1.__dict__)
+px = p1
+print('id(p1):', id(p1))
+print('id(px):', id(px))
+print('id(p2):', id(p2))
+
+print(p1)
+print(px)
+print(p2)
+
+print(p1.name, 'is', p1.age)
+print(p2.name, 'is', p2.age)
+
+p3 = Person('Adam', 19)
+print(p3)
+p3.birthday()
+print(p3)
+
+pay = p2.calculate_pay(40)
+print('Pay', p2.name, pay)
+pay = p3.calculate_pay(40)
+print('Pay', p3.name, pay)
+
+print('-' * 20)
+p1 = Person('John', 36)
+print(p1)
+print (p1.name, 'is', p1.age)
+print('p1.is_teenager', p1.is_teenager())
+p1.birthday()
+print(p1)
+p1.age = 18
+print(p1)
