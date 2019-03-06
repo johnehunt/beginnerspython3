@@ -1,5 +1,3 @@
-# Accounts module
-
 class BalanceError(Exception):
     """ The Balance will be invalid """
 
@@ -94,3 +92,31 @@ class InvestmentAccount(Account):
 
     def __str__(self):
         return super().__str__() + ', type: ' + self.type
+
+
+acc1 = CurrentAccount('123', 'John', 10.05, 100.0)
+acc2 = DepositAccount('345', 'John', 23.55, 0.5)
+acc3 = InvestmentAccount('567', 'Phoebe', 12.45, 'high risk')
+
+print(acc1)
+print(acc2)
+print(acc3)
+
+acc1.deposit(23.45)
+acc1.withdraw(12.33)
+print('balance:', acc1.balance)
+
+print('Number of Account instances created:', Account.instance_count)
+
+try:
+    print('balance:', acc1.balance)
+    acc1.withdraw(300.00)
+    print('balance:', acc1.balance)
+except BalanceError as e:
+    print('Handling Exception')
+    print(e)
+
+try:
+    acc1.deposit(-1)
+except AmountError as e:
+    print(e)

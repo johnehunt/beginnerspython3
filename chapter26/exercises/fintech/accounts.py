@@ -37,14 +37,6 @@ class Account(metaclass=ABCMeta):
         self._balance = opening_balance
         self.type = account_type
 
-    def __enter__(self):
-        print('__enter__')
-        return self
-
-    def __exit__(self, *args):
-        print('__exit__:', args)
-        return True
-
     def deposit(self, amount):
         if amount < 0:
             print('You cannot deposit negative amounts')
