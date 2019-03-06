@@ -8,7 +8,7 @@ print("{} is {} years old".format(name, age))
 
 # Can specify an index for the substitution
 format_string = "Hello {1} {0}, you got {2}%"
-print(format_string.format('Smith', 'Carol', 53))
+print(format_string.format('Smith', 'Carol', 75))
 
 # Can use named substitutions, order is not significant
 format_string = "{artist} sang {song} in {year}"
