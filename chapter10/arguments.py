@@ -33,4 +33,3 @@ printer(0, b, 5)
 printer(0, *a)
 printer(0, *b)
 printer(0, *[1, 2, 3, 4])
-
