@@ -1,14 +1,14 @@
 # this is the first comment
 num = int(input('Enter a number: '))
 if num < 0:
-    print(num, ' is negative')
+    print(num, 'is negative')
 
 print('-' * 25)
 
 num = int(input('Enter another number: '))
 if num > 0:
-    print(num, ' is positive')
-    print(num, ' squared is ', num * num)
+    print(num, 'is positive')
+    print(num, 'squared is ', num * num)
 
 print('Bye')
 
@@ -36,22 +36,18 @@ else:
 
 print('-' * 25)
 
-num = int(input('Enter a simple number: '))
-result = (-1 if num < 0 else 1)
-print('Result is ', result)
-
 snowing = True
 temp = -1
 if temp < 0:
     print('It is freezing')
     if snowing:
         print('Put on boots')
-    print('Time for Hot Chocloate')
+    print('Time for Hot Chocolate')
 print('Bye')
 
 print('-' * 25)
 age = 15
-status = ''
+status = None
 if (age > 12) and age < 20:
     status = 'teenager'
 else:
@@ -60,3 +56,7 @@ print(status)
 
 status = ('teenager' if age > 12 and age < 20 else 'not teenager')
 print(status)
+
+num = int(input('Enter a simple number: '))
+result = (-1 if num < 0 else 1)
+print('Result is ', result)
