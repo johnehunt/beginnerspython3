@@ -8,11 +8,11 @@ print(type(x))
 
 home = 10
 away = 15
-print(home+ away)
+print(home + away)
 print(type(home + away))
 
 print(10 * 4)
-print(type(10*4))
+print(type(10 * 4))
 
 goals_for = 10
 goals_against = 7
@@ -22,12 +22,12 @@ print(type(goals_for - goals_against))
 print(100 / 20)
 print(type(100 / 20))
 
-res1 = 3/2
+res1 = 3 / 2
 print(res1)
 print(type(res1))
 
 print('-' * 10)
-res1 = 3//2
+res1 = 3 // 2
 print(res1)
 print(type(res1))
 
@@ -35,10 +35,23 @@ a = 5
 b = 3
 print(a ** b)
 
-print('True division 3/2:', 3/ 2)
-print('True division 3//2:', -3 /2)
-print('Integer division 3//2:', 3 //2)
+print('Modulus division 4 % 2:', 4 % 2)
+print('Modulus division 3 % 2:', 3 % 2)
+
+
+print('True division 3/2:', 3 / 2)
+print('True division 3//2:', -3 / 2)
+print('Integer division 3//2:', 3 // 2)
 print('Integer division 3//2:', -3 // 2)
+
+int_value = 1
+string_value = '1.5'
+float_value = float(int_value)
+print('int value as a float:', float_value)
+print(type(float_value))
+float_value = float(string_value)
+print('string value as a float:', float_value)
+print(type(float_value))
 
 print('*' * 10)
 
@@ -70,11 +83,13 @@ print(type(f))
 
 c1 = 1j
 c2 = 2j
+print('c1:', c1, ', c2:', c2)
+print(type(c1))
+print(c1.real)
+print(c1.imag)
+
 c3 = c1 * c2
 print(c3)
-print(type(c3))
-print(c3.real)
-print(c3.imag)
 
 print('=' * 10)
 all_ok = True
