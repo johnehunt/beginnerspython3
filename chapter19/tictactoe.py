@@ -1,4 +1,17 @@
+from abc import ABCMeta, abstractmethod
 import random
+
+class Counter:
+    def __init__(self, string):
+        self.label = string
+
+    def __str__(self):
+        return self.label
+
+
+# Set up Counter Globals
+X = Counter('X')
+O = Counter('O')
 
 
 class Move:
@@ -10,17 +23,27 @@ class Move:
         self.counter = counter
 
 
-class Player:
-    """ Represents a Player and their counter """
+class Player(metaclass=ABCMeta):
+    """ Abstract class representing a Player and their counter """
 
     def __init__(self, board):
         self.board = board
+        self._counter = None
 
-    def set_counter(self, counter):
-        self.counter = counter
+    @property
+    def counter(self):
+        """ Represents Players Counter - may be X or Y"""
+        return self._counter
+
+    @counter.setter
+    def counter(self, value):
+        self._counter = value
+
+    @abstractmethod
+    def get_move(self): pass
 
     def __str__(self):
-        return self.__class__.__name__ + '[' + self.counter + ']'
+        return self.__class__.__name__ + '[' + str(self.counter) + ']'
 
 
 class HumanPlayer(Player):
@@ -29,7 +52,7 @@ class HumanPlayer(Player):
     def __init__(self, board):
         super().__init__(board)
 
-    def get_user_input(self, prompt):
+    def _get_user_input(self, prompt):
         invalid_input = True
         while invalid_input:
             print(prompt)
@@ -47,8 +70,8 @@ class HumanPlayer(Player):
     def get_move(self):
         """ Allow the human player to enter their move """
         while True:
-            row = self.get_user_input('Please input the row')
-            column = self.get_user_input('Please input the column')
+            row = self._get_user_input('Please input the row: ')
+            column = self._get_user_input('Please input the column: ')
 
             if self.board.is_empty_cell(row, column):
                 return Move(self.counter, row, column)
@@ -78,26 +101,20 @@ class ComputerPlayer(Player):
         """ Provide a very simple algorithm for selecting a move"""
         if self.board.is_empty_cell(1, 1):
             # Choose the center
-            # self.board.add_move(self.next_player.counter, 1, 1)
             return Move(self.counter, 1, 1)
         elif self.board.is_empty_cell(0, 0):
             # Choose the top left
-            # self.board.add_move(self.next_player.counter, 0, 0)
             return Move(self.counter, 0, 0)
         elif self.board.is_empty_cell(2, 2):
             # Choose the bottom right
-            # self.board.add_move(self.next_player.counter, 2, 2)
             return Move(self.counter, 2, 2)
         elif self.board.is_empty_cell(0, 2):
             # Choose the top right
-            # self.board.add_move(self.next_player.counter, 0, 2)
             return Move(self.counter, 0, 2)
         elif self.board.is_empty_cell(0, 2):
             # Choose the top right
-            # self.board.add_move(self.next_player.counter, 2, 0)
             return Move(self.counter, 2, 0)
         else:
-            # otherwise randomly select a free cell
             return self.randomly_select_cell()
 
 
@@ -105,13 +122,14 @@ class Board:
     """ The ticTacToe board"""
 
     def __init__(self):
+        # Set up the 3 by 3 grid of cells
         self.cells = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]  # List of lists
         self.separator = '\n' + ('-' * 11) + '\n'
 
     def __str__(self):
-        row1 = ' ' + self.cells[0][0] + ' | ' + self.cells[0][1] + ' | ' + self.cells[0][2]
-        row2 = ' ' + self.cells[1][0] + ' | ' + self.cells[1][1] + ' | ' + self.cells[1][2]
-        row3 = ' ' + self.cells[2][0] + ' | ' + self.cells[2][1] + ' | ' + self.cells[2][2]
+        row1 = ' ' + str(self.cells[0][0]) + ' | ' + str(self.cells[0][1]) + ' | ' + str(self.cells[0][2])
+        row2 = ' ' + str(self.cells[1][0]) + ' | ' + str(self.cells[1][1]) + ' | ' + str(self.cells[1][2])
+        row3 = ' ' + str(self.cells[2][0]) + ' | ' + str(self.cells[2][1]) + ' | ' + str(self.cells[2][2])
         return row1 + self.separator + row2 + self.separator + row3
 
     def add_move(self, move):
@@ -123,7 +141,7 @@ class Board:
         """ Check to see if a cell is empty or not"""
         return self.cells[row][column] == ' '
 
-    def check_cell(self, counter, row, column):
+    def cell_contains(self, counter, row, column):
         """ Check to see if a cell contains the provided counter """
         return self.cells[row][column] == counter
 
@@ -139,21 +157,21 @@ class Board:
         """ Check to see if a player has won or not """
         c = player.counter
         return (# across the top
-               (self.check_cell(c, 0, 0) and self.check_cell(c, 0, 1) and self.check_cell(c, 0, 2)) or
+               (self.cell_contains(c, 0, 0) and self.cell_contains(c, 0, 1) and self.cell_contains(c, 0, 2)) or
                 # across the middle
-                (self.check_cell(c, 1, 0) and self.check_cell(c, 1, 1) and self.check_cell(c, 1, 2)) or
+                (self.cell_contains(c, 1, 0) and self.cell_contains(c, 1, 1) and self.cell_contains(c, 1, 2)) or
                 # across the bottom
-                (self.check_cell(c, 2, 0) and self.check_cell(c, 2, 1) and self.check_cell(c, 2, 2)) or
+                (self.cell_contains(c, 2, 0) and self.cell_contains(c, 2, 1) and self.cell_contains(c, 2, 2)) or
                 # down the left side
-                (self.check_cell(c, 0, 0) and self.check_cell(c, 1, 0) and self.check_cell(c, 2, 0)) or
+                (self.cell_contains(c, 0, 0) and self.cell_contains(c, 1, 0) and self.cell_contains(c, 2, 0)) or
                 # down the middle
-                (self.check_cell(c, 0, 1) and self.check_cell(c, 1, 1) and self.check_cell(c, 2, 1)) or
+                (self.cell_contains(c, 0, 1) and self.cell_contains(c, 1, 1) and self.cell_contains(c, 2, 1)) or
                 # down the right side
-                (self.check_cell(c, 0, 2) and self.check_cell(c, 1, 2) and self.check_cell(c, 2, 2)) or
+                (self.cell_contains(c, 0, 2) and self.cell_contains(c, 1, 2) and self.cell_contains(c, 2, 2)) or
                 # diagonal
-                (self.check_cell(c, 0, 0) and self.check_cell(c, 1, 1) and self.check_cell(c, 2, 2)) or
+                (self.cell_contains(c, 0, 0) and self.cell_contains(c, 1, 1) and self.cell_contains(c, 2, 2)) or
                 # other diagonal
-                (self.check_cell(c, 0, 2) and self.check_cell(c, 1, 1) and self.check_cell(c, 2, 0)))
+                (self.cell_contains(c, 0, 2) and self.cell_contains(c, 1, 1) and self.cell_contains(c, 2, 0)))
 
 
 class Game:
@@ -174,11 +192,12 @@ class Game:
             counter = input().upper()
             if counter != 'X' and counter != 'O':
                 print('Input must be X or O')
-        self.human.set_counter(counter)
         if counter == 'X':
-            self.computer.set_counter('Y')
+            self.human.counter = X
+            self.computer.counter = O
         else:
-            self.computer.set_counter('X')
+            self.human.counter = O
+            self.computer.counter = X
 
     def select_player_to_go_first(self):
         """ Uses a random number to determine who will play first -
