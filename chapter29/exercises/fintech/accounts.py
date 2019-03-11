@@ -1,7 +1,20 @@
 from abc import ABCMeta
+from timeit import default_timer
 
 
 # Accounts module
+
+
+def timer(func):
+    def inner(self, value):
+        print('calling ', func.__name__, 'on', self, 'with', value)
+        start = default_timer()
+        func(self, value)
+        end = default_timer()
+        print('returned from ', func.__name__, 'it took', end - start, 'seconds')
+
+    return inner
+
 
 class BalanceError(Exception):
     """ The Balance will be invalid """
@@ -45,19 +58,20 @@ class Account(metaclass=ABCMeta):
         print('__exit__:', args)
         return True
 
-
     # Method called if attribute is unknown
     def __getattr__(self, attribute):
         print('__getattr__: unknown attribute accessed - ', attribute)
         return -1
 
+    @timer
     def deposit(self, amount):
         if amount < 0:
             print('You cannot deposit negative amounts')
-            raise AmountError(account = self, msg = 'Cannot deposit negative amounts')
+            raise AmountError(account=self, msg='Cannot deposit negative amounts')
         else:
             self._balance += amount
 
+    @timer
     def withdraw(self, amount):
         if amount < 0:
             print('You cannot withdraw negative amounts')
@@ -71,8 +85,9 @@ class Account(metaclass=ABCMeta):
         return self._balance
 
     def __str__(self):
-        return 'Account[' + self.account_number +'] - ' + \
+        return 'Account[' + self.account_number + '] - ' + \
                self.account_holder + ', ' + self.type + ' account = ' + str(self.balance)
+
 
 class CurrentAccount(Account):
 
@@ -80,6 +95,7 @@ class CurrentAccount(Account):
         super().__init__(account_number, account_holder, opening_balance, 'current')
         self.overdraft_limit = -overdraft_limit
 
+    @timer
     def withdraw(self, amount):
         if amount < 0:
             print('You cannot withdraw negative amounts')

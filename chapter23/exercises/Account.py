@@ -1,39 +1,4 @@
-from abc import ABCMeta
-from timeit import default_timer
-
-
-# Accounts module
-
-
-def timer(func):
-    def inner(self, value):
-        print('calling ', func.__name__, 'on', self, 'with', value)
-        start = default_timer()
-        func(self, value)
-        end = default_timer()
-        print('returned from ', func.__name__, 'it took', end - start, 'seconds')
-
-    return inner
-
-
-class BalanceError(Exception):
-    """ The Balance will be invalid """
-
-    def __init__(self, account):
-        self.account = account
-
-
-class AmountError(Exception):
-
-    def __init__(self, account, msg):
-        self.account = account
-        self.message = msg
-
-    def __str__(self):
-        return 'AmountError (' + self.message + ') on ' + str(self.account)
-
-
-class Account(metaclass=ABCMeta):
+class Account:
     """" A class used to represent a type of account """
 
     instance_count = 0
@@ -50,34 +15,11 @@ class Account(metaclass=ABCMeta):
         self._balance = opening_balance
         self.type = account_type
 
-    def __enter__(self):
-        print('__enter__')
-        return self
-
-    def __exit__(self, *args):
-        print('__exit__:', args)
-        return True
-
-    # Method called if attribute is unknown
-    def __getattr__(self, attribute):
-        print('__getattr__: unknown attribute accessed - ', attribute)
-        return -1
-
-    @timer
     def deposit(self, amount):
-        if amount < 0:
-            print('You cannot deposit negative amounts')
-            raise AmountError(account=self, msg='Cannot deposit negative amounts')
-        else:
-            self._balance += amount
+        self._balance += amount
 
-    @timer
     def withdraw(self, amount):
-        if amount < 0:
-            print('You cannot withdraw negative amounts')
-            raise AmountError(self, 'Cannot withdraw negative amounts')
-        else:
-            self._balance -= amount
+        self._balance -= amount
 
     @property
     def balance(self):
@@ -85,7 +27,7 @@ class Account(metaclass=ABCMeta):
         return self._balance
 
     def __str__(self):
-        return 'Account[' + self.account_number + '] - ' + \
+        return 'Account[' + self.account_number +'] - ' + \
                self.account_holder + ', ' + self.type + ' account = ' + str(self.balance)
 
 
@@ -95,14 +37,9 @@ class CurrentAccount(Account):
         super().__init__(account_number, account_holder, opening_balance, 'current')
         self.overdraft_limit = -overdraft_limit
 
-    @timer
     def withdraw(self, amount):
-        if amount < 0:
-            print('You cannot withdraw negative amounts')
-            raise AmountError(self, 'Cannot withdraw negative amounts')
-        elif self.balance - amount < self.overdraft_limit:
+        if self.balance - amount < self.overdraft_limit:
             print('Withdrawal would exceed your overdraft limit')
-            raise BalanceError(self)
         else:
             self._balance -= amount
 
@@ -127,3 +64,22 @@ class InvestmentAccount(Account):
 
     def __str__(self):
         return super().__str__() + ', type: ' + self.type
+
+
+acc1 = CurrentAccount('123', 'John', 10.05, 100.0)
+acc2 = DepositAccount('345', 'John', 23.55, 0.5)
+acc3 = InvestmentAccount('567', 'Phoebe', 12.45, 'high risk')
+
+print(acc1)
+print(acc2)
+print(acc3)
+
+acc1.deposit(23.45)
+acc1.withdraw(12.33)
+print('balance:', acc1.balance)
+
+print('Number of Account instances created:', Account.instance_count)
+
+print('balance:', acc1.balance)
+acc1.withdraw(300.00)
+print('balance:', acc1.balance)

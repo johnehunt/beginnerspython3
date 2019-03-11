@@ -26,3 +26,5 @@ with accounts.CurrentAccount ('891', 'Adam', 5.0, 50.0) as acc:
     acc.deposit(23.0)
     acc.withdraw(12.50)
     print(acc.balance)
+
+print('acc1.branch:', acc1.branch)

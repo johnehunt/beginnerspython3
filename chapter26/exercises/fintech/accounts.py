@@ -1,3 +1,6 @@
+from abc import ABCMeta
+
+
 # Accounts module
 
 class BalanceError(Exception):
@@ -17,7 +20,7 @@ class AmountError(Exception):
         return 'AmountError (' + self.message + ') on ' + str(self.account)
 
 
-class Account:
+class Account(metaclass=ABCMeta):
     """" A class used to represent a type of account """
 
     instance_count = 0

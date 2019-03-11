@@ -21,3 +21,8 @@ try:
 except accounts.BalanceError as e:
     print('Handling Exception')
     print(e)
+
+with accounts.CurrentAccount ('891', 'Adam', 5.0, 50.0) as acc:
+    acc.deposit(23.0)
+    acc.withdraw(12.50)
+    print(acc.balance)
