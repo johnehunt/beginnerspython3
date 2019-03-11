@@ -45,12 +45,6 @@ class Account(metaclass=ABCMeta):
         print('__exit__:', args)
         return True
 
-
-    # Method called if attribute is unknown
-    def __getattr__(self, attribute):
-        print('__getattr__: unknown attribute accessed - ', attribute)
-        return -1
-
     def deposit(self, amount):
         if amount < 0:
             print('You cannot deposit negative amounts')
