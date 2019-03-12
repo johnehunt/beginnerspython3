@@ -2,7 +2,7 @@ def mult_by_two(num):
     return num * 2
 
 
-def mult_by_5(num):
+def mult_by_five(num):
     return num * 5
 
 
@@ -21,7 +21,7 @@ def apply(num, func):
 result = apply(10, mult_by_two)
 print(result)
 
-print(apply(10, mult_by_5))
+print(apply(10, mult_by_five))
 print(apply(10, square))
 print(apply(10, add_one))
 print(apply(10, mult_by_two))
