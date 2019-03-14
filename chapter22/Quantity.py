@@ -11,7 +11,10 @@ class Quantity:
         return Quantity(new_value)
 
     def __mul__(self, other):
-        new_value = self.value * other.value
+        if isinstance(other, int):
+            new_value = self.value * other
+        else:
+            new_value = self.value * other.value
         return Quantity(new_value)
 
     def __pow__(self, other):
@@ -19,7 +22,10 @@ class Quantity:
         return Quantity(new_value)
 
     def __truediv__(self, other):
-        new_value = self.value / other.value
+        if isinstance(other, int):
+            new_value = self.value / other
+        else:
+            new_value = self.value / other.value
         return Quantity(new_value)
 
     def __floordiv__(self, other):
@@ -59,6 +65,7 @@ def main():
 
     q3 = q1 + q2
     print('q3 =', q3)
+    print('q2 - q1 =', q2 - q1)
 
     print('q1 * q2 =', q1 * q2)
     print('q1 / q2 =', q1 / q2)
@@ -66,6 +73,9 @@ def main():
     print('q1 < q2: ', q1 < q2)
     print('q3 > q2: ', q3 > q2)
     print('q3 == q1: ', q3 == q1)
+
+    print('q1 * 2', q1 * 2)
+    print('q2 / 2', q2 / 2)
 
 
 if __name__ == '__main__':
