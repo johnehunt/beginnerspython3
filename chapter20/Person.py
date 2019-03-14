@@ -37,16 +37,19 @@ class SalesPerson(Employee):
         return self.sales * 0.5
 
 
+print('Person')
 p = Person('John', 54)
 print(p)
+print('-' * 25)
 
+print('Employee')
 e = Employee('Denise', 51, 7468)
 e.birthday()
-
 print('e.calculate_pay(40):', e.calculate_pay(40))
+print('-' * 25)
 
+print('SalesPerson')
 s = SalesPerson('Phoebe', 21, 4712, 'UK', 30000.0)
 s.birthday()
-
 print('s.calculate_pay(40):', s.calculate_pay(40))
 print('s.bonus():', s.bonus())
