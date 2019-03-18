@@ -17,7 +17,7 @@ def get_length(self):
     return len(self.data)
 
 
-# Monkey patching
+# Monkey patching class
 Bag.__len__ = get_length
 
 print(len(b))

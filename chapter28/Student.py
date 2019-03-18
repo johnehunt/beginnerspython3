@@ -55,4 +55,6 @@ student.my_default()
 # res2 = student.dummy_method()
 # print('student.dummy_method():', res2)
 
-
+# Attempt to look up class variable via object
+# print('student.name:', student.name)
+# print("student.__dict__['count']:", student.__dict__['count'])
