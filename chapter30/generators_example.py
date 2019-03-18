@@ -32,7 +32,6 @@ def evens_up_to(limit):
 for i in evens_up_to(6):
     print(i, end=', ')
 
-
 for i in evens_up_to(4):
     print('i:', i)
 
@@ -42,6 +41,6 @@ for i in evens_up_to(4):
     print('')
 
 evens = evens_up_to(4)
-print(next(evens))
-print(next(evens))
+print(next(evens), end=', ')
+print(next(evens), end=', ')
 print(next(evens))

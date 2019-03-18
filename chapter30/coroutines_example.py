@@ -1,16 +1,16 @@
 def grep(pattern):
-    print('Looking for ', pattern)
+    print('Looking for', pattern)
     try:
         while True:
             line = (yield)
             if pattern in line:
                 print(line)
     except GeneratorExit:
-        print('Going away. Goodbye')
+        print('Exiting the Co-routine')
 
 
-print("Starting")
-# Initialize the coroutine
+print('Starting')
+# Initialise the coroutine
 g = grep('Python')
 
 # prime the coroutine
