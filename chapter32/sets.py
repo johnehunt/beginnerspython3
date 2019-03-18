@@ -23,3 +23,14 @@ print('Union:', s1 | s2)
 print('Intersection:', s1 & s2)
 print('Difference:', s1 - s2)
 print('Symmetric Difference:', s1 ^ s2)
+
+s1 = { (1, 2, 3)}
+print(s1)
+
+# Need to convert sets and lists into frozensets
+s2 = { frozenset({1, 2, 3}) }
+print(s2)
+
+s3 = { frozenset([1, 2, 3]) }
+print(s3)
+
