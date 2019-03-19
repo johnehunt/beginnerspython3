@@ -10,13 +10,13 @@ class Stack:
         return self._list.pop()
 
     def top(self):
-        return self._list[self.length() - 1]
+        return self._list[self.__len__() - 1]
 
-    def length(self):
+    def __len__(self):
         return len(self._list)
 
     def is_empty(self):
-        return self.length() == 0
+        return self.__len__ == 0
 
     def __str__(self):
         return 'Stack: ' + str(self._list)
@@ -28,7 +28,7 @@ stack.push('T2')
 stack.push('T3')
 print('stack:', stack)
 print('stack.is_empty():', stack.is_empty())
-print('stack.length():', stack.length())
+print('len(stack):', len(stack))
 print('stack.top():', stack.top())
 print('stack.pop():', stack.pop())
 print('stack:', stack)

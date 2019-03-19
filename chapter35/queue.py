@@ -1,3 +1,5 @@
+# Smaple Queue
+
 queue = [] # Create an empty queue
 queue.append('task1')
 print('initial queue:', queue)
@@ -20,11 +22,12 @@ class Queue:
     def dequeue(self):
         return self._list.pop(0)
 
-    def length(self):
+    def __len__(self):
+        """ Supports the len protocol """
         return len(self._list)
 
     def is_empty(self):
-        return self.length() == 0
+        return self.__len__() == 0
 
     def peek(self):
         return self._list[0]
@@ -36,7 +39,7 @@ class Queue:
 queue = Queue()
 print('queue.is_empty():', queue.is_empty())
 queue.enqueue('task1')
-print('queue.length():', queue.length())
+print('len(queue):', len(queue))
 queue.enqueue('task2')
 queue.enqueue('task3')
 print('queue:', queue)
