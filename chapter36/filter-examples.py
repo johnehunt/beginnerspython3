@@ -1,7 +1,7 @@
 from Person import Person
 
 data = [1, 3, 5, 2, 7, 4, 10]
-print('data;', data)
+print('data:', data)
 
 # Filter for even numbers using a lambda function
 d1 = list(filter(lambda i: i % 2 == 0, data))
