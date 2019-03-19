@@ -49,19 +49,19 @@ print(d)
 del d['two']
 print(d)
 
-seasons = {"Spring": ('Mar', 'Apr', 'May'),
+seasons = {'Spring': ('Mar', 'Apr', 'May'),
            'Summer': ('June', 'July', 'August'),
            'Autumn': ('September', 'October', 'November'),
-           "Winter": ('December', 'January', 'February')}
-print(seasons["Spring"])
-print(seasons["Spring"][1])
+           'Winter': ('December', 'January', 'February')}
+print(seasons['Spring'])
+print(seasons['Spring'][1])
 
 print('-' * 25)
 
 print(d.keys())
 print(d.values())
-values = d.values()
-for e in values:
+
+for e in d.values():
     print(e)
 
 print(d.items())
@@ -69,3 +69,18 @@ print(d.items())
 d['four'] = 4
 print(d.keys())
 print(sorted(d.keys()))
+
+dict = cities
+key = 'England'
+
+if key in dict:
+    print('Key is present, value = ', dict[key])
+else:
+    print('Key not present')
+
+print('key.__hash__():', key.__hash__())
+print("key.__eq__('England'):", key.__eq__('England'))
+
+class NotHashableThing(object):
+    __hash__ = None
+
