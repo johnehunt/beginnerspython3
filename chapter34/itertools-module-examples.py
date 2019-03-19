@@ -6,7 +6,7 @@ print(r1)
 
 # Create iterator with element repeated specified number of 
 #  times (possibly infinite) 
-r2 = list(itertools.repeat("hello", 5))
+r2 = list(itertools.repeat('hello', 5))
 print(r2)
 
 # Create iterator with elements from first iterator starting   
