@@ -50,7 +50,7 @@ def get_numbers_from_user():
 
 
 def get_integer_input(message):
-    """ Obtain input form user and convert to an int"""
+    """ Obtain input from user and convert to an int"""
     value_as_string = input(message)
     while not value_as_string.isnumeric():
         print('The input must be an integer')
