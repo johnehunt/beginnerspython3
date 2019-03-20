@@ -1,3 +1,5 @@
+# name is a reusable variable
+
 print('Hello, world')
 name = input('Enter your name: ')
 print('Hello', name)

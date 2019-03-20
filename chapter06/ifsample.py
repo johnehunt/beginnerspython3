@@ -1,10 +1,12 @@
-# this is the first comment
+# Obtain a number from the user
+# and check to see if it is non-negative
 num = int(input('Enter a number: '))
 if num < 0:
     print(num, 'is negative')
 
 print('-' * 25)
 
+# Now check to see if it is positive
 num = int(input('Enter another number: '))
 if num > 0:
     print(num, 'is positive')
@@ -14,6 +16,7 @@ print('Bye')
 
 print('-' * 25)
 
+# Now check to see if the number is negative or zero /positive
 num = int(input('Enter yet another number: '))
 if num < 0:
     print('Its negative')
@@ -22,6 +25,7 @@ else:
 
 print('-' * 25)
 
+# Illustrate multiple elif example with an else
 savings = float(input("Enter how much you have in savings: "))
 if savings == 0:
     print("Sorry no savings")
@@ -36,6 +40,7 @@ else:
 
 print('-' * 25)
 
+# Nested if statement example
 snowing = True
 temp = -1
 if temp < 0:
@@ -45,15 +50,17 @@ if temp < 0:
     print('Time for Hot Chocolate')
 print('Bye')
 
+# Using an and in the condition
 print('-' * 25)
 age = 15
 status = None
-if (age > 12) and age < 20:
+if age > 12 and age < 20:
     status = 'teenager'
 else:
     status = 'not teenager'
 print(status)
 
+# Short hand form if expression examples
 status = ('teenager' if age > 12 and age < 20 else 'not teenager')
 print(status)
 
