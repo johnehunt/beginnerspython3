@@ -25,7 +25,7 @@ show_value(local_data)
 
 for i in range(2):
     t = Thread(name='W' + str(i),
-               target=worker, args=(local_data,))
+               target=worker, args=[local_data])
     t.start()
 
 show_value(local_data)
