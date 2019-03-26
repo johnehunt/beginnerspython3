@@ -1,6 +1,6 @@
-def inc(x):
+def increment(x):
     return x + 1
 
 
-def test_inc_integer_3():
-    assert inc(3) == 4
+def test_increment_integer_3():
+    assert increment(3) == 4
