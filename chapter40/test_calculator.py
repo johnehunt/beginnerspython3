@@ -2,24 +2,24 @@ import pytest
 from calculator import Calculator
 
 
-@pytest.fixture(scope="session", autouse=True)
+@pytest.fixture(scope='session', autouse=True)
 def session_scope_fixture():
     print('session_scope_fixture')
 
 
-@pytest.fixture(scope="module", autouse=True)
+@pytest.fixture(scope='module', autouse=True)
 def module_scope_fixture():
     print('module_scope_fixture')
 
 
-@pytest.fixture(scope="class", autouse=True)
+@pytest.fixture(scope='class', autouse=True)
 def class_scope_fixture():
     print('class_scope_fixture')
 
 
 @pytest.fixture
 def calculator():
-    """Returns a Calculator instance"""
+    """ Returns a Calculator instance """
     print('calculator fixture')
     return Calculator()
 
@@ -48,7 +48,7 @@ def test_add_one_and_one(calculator):
     assert calculator.total == 2
 
 
-@pytest.mark.parametrize("input1,input2,expected", [
+@pytest.mark.parametrize('input1,input2,expected', [
     (3, 1, 4),
     (3, 2, 5),
 ])
@@ -60,7 +60,7 @@ def test_calculator_add_operation(calculator, input1, input2, expected):
     assert calculator.total == expected
 
 
-@pytest.mark.skip(reason="not implemented yet")
+@pytest.mark.skip(reason='not implemented yet')
 def test_calculator_multiply(calculator):
     calculator.multiply(2, 3)
     assert calculator.total == 6
