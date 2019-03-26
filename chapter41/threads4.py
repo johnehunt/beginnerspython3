@@ -1,6 +1,7 @@
 from threading import Thread
 from time import sleep
 
+# Example extending the Thread class
 
 class WorkerThread(Thread):
     def __init__(self, daemon=None, target=None, name=None):

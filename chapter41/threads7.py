@@ -18,6 +18,8 @@ def worker(data):
 
 
 print(currentThread().name, ' - Starting')
+
+# Create thread local data object
 local_data = local()
 show_value(local_data)
 

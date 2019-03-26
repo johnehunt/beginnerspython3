@@ -8,6 +8,8 @@ def worker(msg):
         print(msg, end='', flush=True)
         sleep(1)
 
+# Start two normal threads and a daemon thread
+
 
 t1 = Thread(name='worker', target=worker, args=('A'))
 t2 = Thread(target=worker, args=('B'))  # use default name e.g. Thread-1

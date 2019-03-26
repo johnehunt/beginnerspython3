@@ -7,6 +7,11 @@ def worker(msg):
         print(msg, end='', flush=True)
         sleep(1)
 
+print('Starting')
 
-d = Thread(daemon=True, target=worker, args=('C'))
+# Create a daemon thread
+d = Thread(daemon=True, target=worker, args='C')
 d.start()
+
+sleep(5)
+print('Done')
