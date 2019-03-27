@@ -15,15 +15,15 @@ def worker(conn):
 
 def main():
     print('Main - Starting, creating the Pipe')
-    parent_connection, child_connection = Pipe()
+    main_connection, worker_connection = Pipe()
     print('Main - Setting up the process')
-    p = Process(target=worker, args=[child_connection])
+    p = Process(target=worker, args=[worker_connection])
     print('Main - Starting the process')
     p.start()
     print('Main - Wait for a response from the child process')
-    print(parent_connection.recv())
+    print(main_connection.recv())
     print('Main - closing parent process end of connection')
-    parent_connection.close()
+    main_connection.close()
     print('Main - Done')
 
 
