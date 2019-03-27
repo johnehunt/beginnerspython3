@@ -20,10 +20,10 @@ def callback():
 
 print('Main - Starting')
 
-b = Barrier(3, callback)
-t1 = Thread(target=print_it, args=('A', b))
-t2 = Thread(target=print_it, args=('B', b))
-t3 = Thread(target=print_it, args=('C', b))
+barrier = Barrier(3, callback)
+t1 = Thread(target=print_it, args=('A', barrier))
+t2 = Thread(target=print_it, args=('B', barrier))
+t3 = Thread(target=print_it, args=('C', barrier))
 t1.start()
 t2.start()
 t3.start()

@@ -19,10 +19,10 @@ def callback():
 
 
 print('Main - Starting')
-b = Barrier(3, callback)
-t1 = Process(target=print_it, args=('A', b))
-t2 = Process(target=print_it, args=('B', b))
-t3 = Process(target=print_it, args=('C', b))
+barrier = Barrier(3, callback)
+t1 = Process(target=print_it, args=('A', barrier))
+t2 = Process(target=print_it, args=('B', barrier))
+t3 = Process(target=print_it, args=('C', barrier))
 t1.start()
 t2.start()
 t3.start()

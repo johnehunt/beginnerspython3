@@ -11,9 +11,9 @@ def worker(semaphore):
 
 print('MainThread - Starting')
 
-s = Semaphore(2)
+semaphore = Semaphore(2)
 for i in range(0, 5):
-    thread = Thread(name='T' + str(i), target=worker, args=[s])
+    thread = Thread(name='T' + str(i), target=worker, args=[semaphore])
     thread.start()
 
 print('MainThread - Done')
