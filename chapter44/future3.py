@@ -1,11 +1,15 @@
+# Multiple futures example
+
 from concurrent.futures import ThreadPoolExecutor
 from time import sleep
 
+
 def worker(msg):
-    for i in range(0,10):
-        print(msg,end='', flush=True)
+    for i in range(0, 10):
+        print(msg, end='', flush=True)
         sleep(1)
     return i
+
 
 print('Starting...')
 pool = ThreadPoolExecutor(3)

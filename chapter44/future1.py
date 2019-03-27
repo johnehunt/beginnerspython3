@@ -16,11 +16,11 @@ pool = ThreadPoolExecutor(1)
 # Submit the function ot the pool to run
 # concurrently - obtain a future from pool
 print('Submitting the worker to the pool')
-future1 = pool.submit(worker, 'A')
+future = pool.submit(worker, 'A')
 
-print('Obtained a reference to the future object', future1)
+print('Obtained a reference to the future object', future)
 
 # Obtain the result form the future - wait if necessary
-print('future1.result():', future1.result())
+print('future.result():', future.result())
 
 print('Done')
