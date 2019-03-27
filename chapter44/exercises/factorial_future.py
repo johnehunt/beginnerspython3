@@ -1,6 +1,7 @@
 from concurrent.futures import ThreadPoolExecutor
 from time import sleep
 
+
 # Function to calculate factorials
 def factorial(num):
     if num == 0:
@@ -13,7 +14,7 @@ def factorial(num):
         return factorial_value
 
 
-# Function to pront the result
+# Function to print the result
 def print_future_result(future):
     print('In callback Future result: ', future.result())
 
@@ -25,6 +26,5 @@ pool = ThreadPoolExecutor(5)
 for v in data:
     future = pool.submit(factorial, v)
     future.add_done_callback(print_future_result)
-
 
 print('Done')
