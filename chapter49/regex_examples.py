@@ -24,7 +24,7 @@ matchLine1 = rePattern.search(line1)
 if matchLine1:
     print('Line 1 contains a number')
 else:
-    print ('Line 1 does not contain a number')
+    print('Line 1 does not contain a number')
 
 print('-' * 10)
 
@@ -32,7 +32,7 @@ matchLine1 = re.search(containsIntegers, line1)
 if matchLine1:
     print('Line 1 contains a number')
 else:
-    print ('Line 1 does not contain a number')
+    print('Line 1 does not contain a number')
 
 # Alternative words
 music = r'Beatles|Adele|Gorillaz'
@@ -47,13 +47,12 @@ request = 'A ditty from Paloma'
 if re.search(music2, request):
     print('Only Love Can Hurt like this')
 
-line='root:*:0:0:System Administrator:/var/root:/bin/sh'
+line = 'root:*:0:0:System Administrator:/var/root:/bin/sh'
 rootUser = r'root:'
 if re.search(rootUser, line):
     print('Root')
 else:
     print('Not root')
-
 
 usesSh = r'/bin/sh$'
 if re.search(usesSh, line):
@@ -61,7 +60,7 @@ if re.search(usesSh, line):
 else:
     print('Some other shell')
 
-name='John Smith'
+name = 'John Smith'
 nameRe = r'john'
 if re.search(nameRe, name, re.IGNORECASE):
     print('Match')
@@ -99,18 +98,17 @@ print(p.split(s))
 pattern = '(England|Wales|Scotland)'
 input = 'England for football, Wales for Rugby and Scotland for the Highland games'
 
-print(re.sub(pattern, 'Wales', input ))
-print(re.subn(pattern,'Scotland', input ))
+print(re.sub(pattern, 'England', input))
+print(re.subn(pattern, 'Scotland', input))
 x = re.sub(pattern, 'Wales', input, 2)
 print(x)
 
-str = "The rain in Spain stays mainly on the plain"
-results = re.findall("[a-zA-Z]{2}ai.", str)
+str = 'The rain in Spain stays mainly on the plain'
+results = re.findall('[a-zA-Z]{2}ai.', str)
 print(results)
 for s in results:
     print(s)
 
-str = "It was a hot summer night"
-x = re.split("\s", str)
+str = 'It was a hot summer night'
+x = re.split('\s', str)
 print(x)
-
