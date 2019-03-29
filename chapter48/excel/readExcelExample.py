@@ -1,22 +1,23 @@
 from openpyxl import load_workbook
 
+
 def main():
     print('Starting reading Excel file using openPyXL')
 
-    wb = load_workbook(filename='sample.xlsx')
-    print(wb.active)
-    print(wb.sheetnames)
-    print(wb.worksheets)
+    workbook = load_workbook(filename='sample.xlsx')
+    print(workbook.active)
+    print(workbook.sheetnames)
+    print(workbook.worksheets)
 
     print('-' * 10)
-    ws = wb['my worksheet']
+    ws = workbook['my worksheet']
     print(ws['A1'])
     print(ws['A1'].value)
     print(ws['A2'].value)
     print(ws['A3'].value)
 
     print('-' * 10)
-    for sheet in wb:
+    for sheet in workbook:
         print(sheet.title)
 
     print('-' * 10)
@@ -26,6 +27,7 @@ def main():
     print('-' * 10)
 
     print('Finished reading Excel file using openPyXL')
+
 
 if __name__ == '__main__':
     main()
