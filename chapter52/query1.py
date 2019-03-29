@@ -20,7 +20,7 @@ connection = pymysql.connect('localhost', 'user', 'password', 'uni-database')
 cursor = connection.cursor()
 
 # execute SQL query using execute() method.
-cursor.execute("SELECT * FROM students")
+cursor.execute('SELECT * FROM students')
 
 print('cursor.rowcount', cursor.rowcount)
 print('cursor.description', cursor.description)
@@ -30,9 +30,10 @@ data = cursor.fetchall()
 for row in data:
     print('row:', row)
 
+# Convert data into Student objects
 for row in data:
-    id, name, surname, subject, email = row
-    student = Student(id, name, surname, subject, email)
+    student_id, name, surname, subject, email = row
+    student = Student(student_id, name, surname, subject, email)
     print(student)
 
 # disconnect from server

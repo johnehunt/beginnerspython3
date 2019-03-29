@@ -9,6 +9,7 @@ cursor = connection.cursor()
 try:
     # Execute CREATE command
     cursor.execute("CREATE TABLE log (message VARCHAR(100) NOT NULL)")
+
     # Commit the changes to the database
     connection.commit()
 except:
