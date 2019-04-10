@@ -1,9 +1,13 @@
 import wx
 
+
 class WelcomeFrame(wx.Frame):
     """ The Main Window / Frame fo the application """
-    def __init__(self, *args, **kw):
-        super(WelcomeFrame, self).__init__(*args, **kw)
+
+    def __init__(self):
+        super(WelcomeFrame, self).__init__(parent=None,
+                                           title='Sample App',
+                                           size=(300, 200))
 
         # Set up panel within the frame and text label
         self.panel = wx.Panel(self)
@@ -27,7 +31,7 @@ class MainApp(wx.App):
 
     def OnInit(self):
         """ Initialise the main GUI Application"""
-        frame = WelcomeFrame(None, title='Sample App')
+        frame = WelcomeFrame()
         frame.Show()
         # Indicate whether processing should continue or not
         return True
