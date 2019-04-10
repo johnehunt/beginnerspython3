@@ -2,7 +2,7 @@ import wx
 
 
 class WelcomeFrame(wx.Frame):
-    """ The Main Window / Frame fo the application """
+    """ The Main Window / Frame of the application """
 
     def __init__(self):
         super(WelcomeFrame, self).__init__(parent=None,

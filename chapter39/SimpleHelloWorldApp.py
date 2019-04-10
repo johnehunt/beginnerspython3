@@ -1,6 +1,6 @@
 import wx
 
-# Create the APplication Object
+# Create the Application Object
 app = wx.App()
 
 # Now create a Frame (representing the window)
