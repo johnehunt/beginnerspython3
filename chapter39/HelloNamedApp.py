@@ -48,12 +48,19 @@ class HelloFrame(wx.Frame):
         self.label.SetLabelText('Welcome ' + self.name)
 
 
-def main():
-    app = wx.App()
-    ex = HelloFrame(None, title='Sample App')
-    ex.Show()
-    app.MainLoop()
+class MainApp(wx.App):
+
+    def OnInit(self):
+        frame = HelloFrame(None, title='Sample App')
+        frame.Show()
+        # Indicate whether processing should continue or not
+        return True
+
+    def OnExit(self):
+        print('Goodbye')
+        return 1
 
 
-if __name__ == '__main__':
-    main()
+# Run the GUI application
+app = MainApp()
+app.MainLoop()
