@@ -2,6 +2,8 @@ from abc import ABCMeta, abstractmethod
 import random
 
 class Counter:
+    """ Represents a Counter used on the board """
+
     def __init__(self, string):
         self.label = string
 
