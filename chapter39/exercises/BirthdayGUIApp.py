@@ -4,9 +4,9 @@ import wx
 class BirthdayFrame(wx.Frame):
 
     def __init__(self):
-        super(BirthdayFrame, self).__init__(parent=None,
-                                            title='Happy Birthday App',
-                                            size=(300, 200))
+        super().__init__(parent=None,
+                         title='Happy Birthday App',
+                         size=(300, 200))
 
         self.name = '<unknown'
         self.age = -1
