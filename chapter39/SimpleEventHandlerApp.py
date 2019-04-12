@@ -5,9 +5,9 @@ class WelcomeFrame(wx.Frame):
     """ The Main Window / Frame of the application """
 
     def __init__(self):
-        super(WelcomeFrame, self).__init__(parent=None,
-                                           title='Sample App',
-                                           size=(300, 200))
+        super().__init__(parent=None,
+                         title='Sample App',
+                         size=(300, 200))
 
         # Set up panel within the frame and text label
         self.panel = wx.Panel(self)

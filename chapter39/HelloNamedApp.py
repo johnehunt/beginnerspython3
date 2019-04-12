@@ -4,9 +4,9 @@ import wx
 class HelloFrame(wx.Frame):
 
     def __init__(self, title):
-        super(HelloFrame, self).__init__(None,
-                                         title=title,
-                                         size=(300, 200))
+        super().__init__(None,
+                         title=title,
+                         size=(300, 200))
 
         self.name = '<unknown'
 
@@ -53,7 +53,10 @@ class HelloFrame(wx.Frame):
     def show_message(self, event):
         """ Event Handler to display the Message Dialog
         using the current value of the name attribute. """
-        dialog = wx.MessageDialog(None, 'Welcome To Python ' + self.name, 'Hello', wx.OK)
+        dialog = wx.MessageDialog(None,
+                                  message='Welcome To Python ' + self.name,
+                                  caption='Hello',
+                                  style=wx.OK)
         dialog.ShowModal()
 
     def set_name(self, event):

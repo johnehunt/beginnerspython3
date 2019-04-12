@@ -4,9 +4,9 @@ import wx
 class SampleFrame(wx.Frame):
 
     def __init__(self):
-        super(SampleFrame, self).__init__(parent=None,
-                                          title='Sample App',
-                                          size=(300, 300))
+        super().__init__(parent=None,
+                         title='Sample App',
+                         size=(300, 300))
 
         # Set up the first Panel to be at position 1, 1
         # and of size 300 by 100 with a blue background
