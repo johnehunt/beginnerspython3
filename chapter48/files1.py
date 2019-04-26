@@ -1,6 +1,0 @@
-file = open('myfile.txt', 'r+')
-print('file.name:', file.name)
-print('file.closed:', file.closed)
-print('file.mode:', file.mode)
-file.close()
-print('file.closed now:', file.closed)
