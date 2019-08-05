@@ -3,6 +3,12 @@
 basket = {'apple', 'orange', 'apple', 'pear', 'orange', 'banana'}
 print(basket)                      # show that duplicates have been removed
 print(len(basket))
+
+for item in basket:
+    print(item)
+
+print('apple' in basket)
+
 basket.remove('apple')
 basket.discard('apricot')
 print(basket)
