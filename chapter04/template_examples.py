@@ -1,6 +1,6 @@
 import string
 
-# Initialise the template with ¢variables that
+# Initialise the template with variables that
 # will be substitute with actual values
 template = string.Template('$artist sang $song in $year')
 

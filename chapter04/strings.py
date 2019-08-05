@@ -9,6 +9,11 @@ string_3 = string_1 + string_2
 print(string_3)
 print(len(string_3))
 
+my_variable = 'Bob'
+print(my_variable)
+my_variable = "Eloise"
+print(my_variable)
+
 # A multi line string
 z = """
 Hello
@@ -16,7 +21,7 @@ Hello
 """
 print(z)
 
-# Printing the type of a stirn g- its class string
+# Printing the type of a string - its class string
 my_variable = 'Bob'
 print(type(my_variable))
 
@@ -27,7 +32,7 @@ print(my_string[1:5])
 print(my_string[:5])
 print(my_string[2:])
 
-# COnverting a string to uppper case
+# Converting a string to uppper case
 print(z.upper())
 
 print(type(b'abc'))
