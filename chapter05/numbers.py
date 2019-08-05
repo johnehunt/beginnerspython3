@@ -65,11 +65,16 @@ exchange_rate = float(input("Please enter the exchange rate to use: "))
 print(exchange_rate)
 print(type(exchange_rate))
 
+print(float(1))
+print(int(exchange_rate))
+
+
 print(2.3 + 1.5)
 print(1.5 / 2.3)
 print(1.5 * 2.3)
 print(2.3 - 1.5)
 print(1.5 - 2.3)
+print(12.0 // 3.0)
 
 i = 3 * 0.1
 print(i)
