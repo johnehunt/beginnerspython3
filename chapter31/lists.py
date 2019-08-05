@@ -1,4 +1,10 @@
-from tuples import Person
+class Person:
+    def __init__(self, name, age):
+        self._name = name
+        self._age = age
+
+    def __str__(self):
+        return 'Person(' + self._name + ', ' + str(self._age) + ')'
 
 list1 = ['John', 'Paul', 'George', 'Ringo']
 list2 = [4]
