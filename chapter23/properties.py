@@ -25,7 +25,7 @@ class Person:
         del self._name
 
     def __str__(self):
-        return 'Person[' + str(self._name) + '] is ' + self._age
+        return 'Person[' + str(self._name) + '] is ' + str(self._age)
 
 
 person = Person('John', 54)
