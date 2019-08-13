@@ -1,7 +1,8 @@
-from abc import ABCMeta, abstractmethod
+from abc import ABC, ABCMeta, abstractmethod
 
 
 class Shape(metaclass=ABCMeta):
+# class Shape(ABC):
 
     def __init__(self, id):
         self._id = id
