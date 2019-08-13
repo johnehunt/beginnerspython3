@@ -1,4 +1,4 @@
-from collections import MutableSequence
+from collections.abc import MutableSequence
 
 
 class Bag(MutableSequence):
@@ -21,6 +21,7 @@ class Bag(MutableSequence):
 
 def main():
     bag = Bag()
+    print(bag)
 
 
 if __name__ == '__main__':
