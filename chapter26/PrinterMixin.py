@@ -1,12 +1,12 @@
-from abc import ABCMeta
+from abc import ABC
 
 
-class PrinterMixin(metaclass=ABCMeta):
+class PrinterMixin(ABC):
     def print_me(self):
         print(self)
 
 
-class IDPrinterMixin(metaclass=ABCMeta):
+class IDPrinterMixin(ABC):
     def print_id(self):
         print(self.id)
 
@@ -28,6 +28,7 @@ class Employee(Person, PrinterMixin, IDPrinterMixin):
 
 def main():
     e = Employee('Megan', 21, 'MS123')
+    print(e)
     e.print_me()
     e.print_id()
 
