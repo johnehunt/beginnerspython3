@@ -2,8 +2,13 @@ class Person:
     """ An example class to hold a persons name and age"""
 
     def __init__(self, name, age):
+        print('init called with', name , age)
         self.name = name
         self.age = age
+
+    def __new__(cls, name, age):
+        print('__new__ called')
+        return super(Person, cls).__new__(cls)
 
     def __str__(self):
         return self.name + ' is ' + str(self.age)
@@ -57,3 +62,5 @@ p1.birthday()
 print(p1)
 p1.age = 18
 print(p1)
+
+print(p1.__doc__)
