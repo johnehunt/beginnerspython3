@@ -40,9 +40,9 @@ print('Modulus division 3 % 2:', 3 % 2)
 
 
 print('True division 3/2:', 3 / 2)
-print('True division 3//2:', -3 / 2)
+print('True division -3/2:', -3 / 2)
 print('Integer division 3//2:', 3 // 2)
-print('Integer division 3//2:', -3 // 2)
+print('Integer division -3//2:', -3 // 2)
 
 int_value = 1
 string_value = '1.5'
@@ -55,13 +55,13 @@ print(type(float_value))
 
 print('*' * 10)
 
-age = int(input('Please enter your age:'))
+age = int(input('Please enter your age: '))
 print(type(age))
 print(age)
 
 print('*' * 10)
 
-exchange_rate = float(input("Please enter the exchange rate to use: "))
+exchange_rate = float(input('Please enter the exchange rate to use: '))
 print(exchange_rate)
 print(type(exchange_rate))
 
