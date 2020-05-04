@@ -40,11 +40,18 @@ class SalesPerson(Employee):
 print('Person')
 p = Person('John', 54)
 print(p)
+p.birthday()
+print(p.name)
+print(p.age)
 print('-' * 25)
 
 print('Employee')
 e = Employee('Denise', 51, 7468)
+print(e)
 e.birthday()
+print(e.name)
+print(e.age)
+print(e.id)
 print('e.calculate_pay(40):', e.calculate_pay(40))
 print('-' * 25)
 
