@@ -2,7 +2,7 @@ def grep(pattern):
     print('Looking for', pattern)
     try:
         while True:
-            line = (yield)
+            line = yield
             if pattern in line:
                 print(line)
     except GeneratorExit:
