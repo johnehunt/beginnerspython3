@@ -249,6 +249,6 @@ def main():
     game = Game()
     game.play()
 
-
+# Check to see if this file is being run as the main module
 if __name__ == '__main__':
     main()
