@@ -1,3 +1,4 @@
+# Basic generator function
 def gen_numbers():
     yield 1
     yield 2
@@ -7,7 +8,9 @@ def gen_numbers():
 for i in gen_numbers():
     print(i)
 
+print('-' * 20)
 
+# Illustrates when yield expressions are executed
 def gen_numbers2():
     print('Start')
     yield 1
@@ -19,8 +22,11 @@ def gen_numbers2():
 
 
 for i in gen_numbers2():
-    print(i)
+    print('-', end='')
+    print(i, end='')
+    print('*')
 
+print('-' * 20)
 
 def evens_up_to(limit):
     value = 0
@@ -32,8 +38,11 @@ def evens_up_to(limit):
 for i in evens_up_to(6):
     print(i, end=', ')
 
+print('\n', '-' * 20)
+
 for i in evens_up_to(4):
     print('i:', i)
+    print('\t', end='')
 
     for j in evens_up_to(6):
         print('j:', j, end=', ')
