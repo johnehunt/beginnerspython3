@@ -6,6 +6,7 @@ class Person:
     def __str__(self):
         return 'Person(' + self._name + ', ' + str(self._age) + ')'
 
+
 list1 = ['John', 'Paul', 'George', 'Ringo']
 list2 = [4]
 list3 = []
