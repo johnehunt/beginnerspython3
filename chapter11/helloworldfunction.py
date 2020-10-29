@@ -69,6 +69,7 @@ print('age is', age)
 print(get_integer_input.__doc__)
 
 
+# Should really be make_a_list to follow Pythonic conventions
 def makeAList(start, end):
     newList = list(range(start, end))
     return newList
@@ -83,7 +84,6 @@ print(list1)
 
 print(dictionary())
 
-
-double = lambda i : i * i
+double = lambda i: i * i
 
 print(double(10))
