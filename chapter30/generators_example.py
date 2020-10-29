@@ -10,6 +10,7 @@ for i in gen_numbers():
 
 print('-' * 20)
 
+
 # Illustrates when yield expressions are executed
 def gen_numbers2():
     print('Start')
@@ -27,6 +28,7 @@ for i in gen_numbers2():
     print('*')
 
 print('-' * 20)
+
 
 def evens_up_to(limit):
     value = 0
