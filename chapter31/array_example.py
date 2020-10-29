@@ -1,4 +1,4 @@
-""" Example ofi using Python array objkects - which are space efficient and fast
+""" Example of using Python array objkects - which are space efficient and fast
 for iterative type processing. """
 
 import array as arr
