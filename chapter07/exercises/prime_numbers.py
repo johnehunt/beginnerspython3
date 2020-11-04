@@ -1,3 +1,5 @@
+# Determine if a number is a prime number
+
 number = input('Please input the number:')
 if number.isnumeric():
 
