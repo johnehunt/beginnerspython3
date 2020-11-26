@@ -7,7 +7,7 @@ if distance_in_km_str.isnumeric():
         print('You must enter a positive distance')
     else:
         print('You entered the distance', distance_in_km, 'in kilometers')
-        distance_in_miles = distance_in_km / 0.6214
+        distance_in_miles = distance_in_km * 0.6214
         print('The distance in miles is', distance_in_miles)
 
 else:
