@@ -10,7 +10,7 @@ def prime_number_generator(num):
                 prime_number = False
                 break
         if prime_number:
-            yield(i)
+            yield i
         prime_number = True
 
 
