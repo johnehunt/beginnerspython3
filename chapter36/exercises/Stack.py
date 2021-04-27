@@ -26,7 +26,7 @@ class Stack:
         return 'Stack: ' + str(self._list)
 
 
-# Define functiosn to use with map and filter
+# Define functions to use with map and filter
 def add_item(item):
     return 'item: ' + item
 
