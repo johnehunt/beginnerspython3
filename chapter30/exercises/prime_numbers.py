@@ -37,7 +37,7 @@ def infinite_prime_number_generator():
                 prime_number = False
                 break
         if prime_number:
-            yield (num)
+            yield num
         prime_number = True
         num += 1
 
