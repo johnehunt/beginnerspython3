@@ -7,7 +7,7 @@ if number.isnumeric():
         # Termination criteria
         print('0! factorial is 1')
     else:
-        # Recursive element
+        # Looping element
         factorial = 1
         for i in range(1, num + 1):
             factorial = factorial * i
